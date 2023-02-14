@@ -9,6 +9,7 @@ import Home from './components/Home';
 import {Container} from 'react-bootstrap';
 import React from 'react';
 import Login from './components/login/login';
+import ArticleForm from "./components/content/ArticleForm";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/content" element={<ArticleList/>}/>
+        <Route path="/content/:id" element={<ArticleForm/>}/>
         <Route path="/user" element={<User/>}/>
         <Route path="/migracion" element={<Migration/>}/>
       </Routes>
