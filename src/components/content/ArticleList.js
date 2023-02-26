@@ -1,15 +1,37 @@
-import React from 'react';
-import {Button, Pagination, Table} from 'react-bootstrap';
-import HeaderStatics from '../HeaderStatics';
+import React from "react";
+import { Pagination, Table } from "react-bootstrap";
+import HeaderStatics from "../HeaderStatics";
+import ArticleTableRow from "./ArticleTableRow";
+
+const articles = [
+  {
+    id: 1,
+    title: "Hoy se jugará el último partido del Mundialito Austral Cup de la sede Paillaco",
+    author: "Omar Gómez",
+    published: "14-11-2023"
+  }, {
+    id: 2,
+    title: "Intento frustrado de \"portonazo\" afectó a fiscal en La Florida",
+    author: "José Pardo",
+    published: "15-11-2023"
+  }, {
+    id: 3,
+    title: "Biden: Putin ha cometido un \"gran error\" con la suspensión de tratado nuclear",
+    author: "Omar Gómez",
+    published: "18-11-2023"
+  }
+];
 
 function ArticleList() {
   const active = 2;
   const items = [];
+
+
   for (let number = 1; number <= 5; number++) {
     items.push(
       <Pagination.Item key={number} active={number === active}>
         {number}
-      </Pagination.Item>,
+      </Pagination.Item>
     );
   }
 
@@ -18,7 +40,7 @@ function ArticleList() {
       <h1>Contenidos</h1>
       <HeaderStatics/>
       <div className="end align-items-end">
-        <a href="/new-article">Agregar nueva entrada</a>
+        <a href="/content/create">Agregar nueva entrada</a>
       </div>
       <br/>
       <Table striped bordered hover>
@@ -27,36 +49,12 @@ function ArticleList() {
           <th>Titulo</th>
           <th>Autor</th>
           <th>Fecha</th>
+          <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Hoy se jugará el último partido del Mundialito Austral Cup de la
-            sede Paillaco
-          </td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>
-            Cuentos inclusivos llegan a las bibliotecas públicas de Los Ríos
-            <div style={{display: 'flex', justifyContent: 'right'}}>
-              <Button variant="link" size="sm">Editar</Button>{' '}
-              <Button variant="link" size="sm">Eliminar</Button>{' '}
-            </div>
-          </td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>
-            <small>Juan Perez</small>
-            <p>Paillaco hacen un llamado a prevenir incendios forestales ante
-              alerta por altas temperaturas</p>
-          </td>
-          <td>aas</td>
-          <td>@twitter</td>
-        </tr>
+        {articles.map(item => <ArticleTableRow key={item.id}
+                                               item={item} />)}
         </tbody>
       </Table>
       <div style={{display: 'flex', justifyContent: 'right'}}>

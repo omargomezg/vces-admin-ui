@@ -24,6 +24,7 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/content" element={<ArticleList/>}/>
         <Route path="/content/:id" element={<ArticleForm/>}/>
+        <Route path="/content/create" element={<ArticleForm/>}/>
         <Route path="/user" element={<User/>}/>
         <Route path="/migracion" element={<Migration/>}/>
       </Routes>
