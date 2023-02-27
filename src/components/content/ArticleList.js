@@ -1,5 +1,5 @@
 import React from "react";
-import { Pagination, Table } from "react-bootstrap";
+import { Pagination, Table, Row, Col, Form, Button, FloatingLabel } from "react-bootstrap";
 import HeaderStatics from "../HeaderStatics";
 import ArticleTableRow from "./ArticleTableRow";
 
@@ -38,26 +38,36 @@ function ArticleList() {
   return (
     <>
       <h1>Contenidos</h1>
-      <HeaderStatics/>
-      <div className="end align-items-end">
-        <a href="/content/create">Agregar nueva entrada</a>
-      </div>
-      <br/>
+      <HeaderStatics />
+      <Row>
+        <Col><a href="/content/create">Agregar entrada</a></Col>
+        <Col>
+          <Form>
+            <FloatingLabel controlId="floatingInputGrid" label="Email address">
+              <Form.Control type="email" size="sm" placeholder="name@example.com" />
+            </FloatingLabel>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+      <br />
       <Table striped bordered hover>
         <thead>
-        <tr>
-          <th>Titulo</th>
-          <th>Autor</th>
-          <th>Fecha</th>
-          <th>&nbsp;</th>
-        </tr>
+          <tr>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Fecha</th>
+            <th>&nbsp;</th>
+          </tr>
         </thead>
         <tbody>
-        {articles.map(item => <ArticleTableRow key={item.id}
-                                               item={item} />)}
+          {articles.map(item => <ArticleTableRow key={item.id}
+            item={item} />)}
         </tbody>
       </Table>
-      <div style={{display: 'flex', justifyContent: 'right'}}>
+      <div style={{ display: 'flex', justifyContent: 'right' }}>
         <Pagination size="sm">{items}</Pagination>
       </div>
     </>
